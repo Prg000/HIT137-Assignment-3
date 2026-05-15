@@ -5,21 +5,18 @@ import math
 
 
 class Alteration:
-    """
-    Abstract base class for all image alteration types.
-    """
-
+    #Abstract base class for all image alteration types.
     def __init__(self, region: tuple):
         """
         Parameters
         ----------
         region : (x, y, w, h) — top-left corner plus width/height
         """
-        self.region = region    # (x, y, w, h)
+        self.region = region   
         self.name   = "base"
 
     def apply(self, image: np.ndarray) -> np.ndarray:
-        """Apply the alteration to image in-place and return it."""
+        #Apply the alteration to image in-place and return it.
         raise NotImplementedError("Subclasses must implement apply()")
 
     def get_center(self) -> tuple:
@@ -32,7 +29,7 @@ class Alteration:
 
 
 class ColourShiftAlteration(Alteration):
-    """Shift the colour channels of a rectangular region."""
+    #Shift the colour channels of a rectangular region.
 
     def __init__(self, region: tuple):
         super().__init__(region)
@@ -55,7 +52,7 @@ class ColourShiftAlteration(Alteration):
 
 
 class BlurAlteration(Alteration):
-    """Apply Gaussian blur to a rectangular region."""
+    #Apply Gaussian blur to a rectangular region.
 
     def __init__(self, region: tuple):
         super().__init__(region)
@@ -72,7 +69,7 @@ class BlurAlteration(Alteration):
 
 
 class BrightnessAlteration(Alteration):
-    """Increase or decrease brightness of a rectangular region."""
+    #Increase or decrease brightness of a rectangular region.
 
     def __init__(self, region: tuple):
         super().__init__(region)
@@ -88,7 +85,7 @@ class BrightnessAlteration(Alteration):
 
 
 class NoiseAlteration(Alteration):
-    """Add salt-and-pepper noise to a rectangular region."""
+    #Add salt-and-pepper noise to a rectangular region.
 
     def __init__(self, region: tuple):
         super().__init__(region)
@@ -109,7 +106,7 @@ class NoiseAlteration(Alteration):
 
 
 class ContrastAlteration(Alteration):
-    """Compress the contrast of a rectangular region."""
+    #Compress the contrast of a rectangular region.
 
     def __init__(self, region: tuple):
         super().__init__(region)
